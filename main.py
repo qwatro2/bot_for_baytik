@@ -4,7 +4,7 @@ import TikTokApi
 from TikTokApi.browser import set_async
 import random
 
-TOKEN = '1305765980:AAEF2l7lyATX7sHHLuv2HVZPOMDKqfVnNak'
+TOKEN = ''
 
 itembtn1 = types.KeyboardButton('Режим поиска по тегу')
 itembtn2 = types.KeyboardButton('Трендовый хэштег')
