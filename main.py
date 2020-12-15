@@ -3,8 +3,9 @@ from aiogram import Bot, Dispatcher, executor, types
 import TikTokApi
 from TikTokApi.browser import set_async
 import random
+import logging
 
-TOKEN = ''
+TOKEN = '1451411647:AAGgw18suH2SrngvHU6UlGx7iBbjjri0_1g'
 
 itembtn1 = types.KeyboardButton('Режим поиска по тегу')
 itembtn2 = types.KeyboardButton('Трендовый хэштег')
@@ -15,6 +16,7 @@ keyboard.row(itembtn1, itembtn2, itembtn3)
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
 api = TikTokApi.TikTokApi()
+logging.basicConfig(level=logging.DEBUG)
 
 set_async()
 
@@ -40,6 +42,7 @@ async def send_video_by_trending_hashtag(message: types.Message):
     await bot.send_message(message.chat.id, '<strong>Мы подбираем'
                                             ' Вам ТикТок с трендовым хэштегом</strong>',
                            parse_mode='HTML')
+    # выбор рандомного хэштега для поиска видео
     hashtag = random.choice(api.discoverHashtags())["cardItem"]["title"]
     videos = api.byHashtag(hashtag, language="ru", count=100)
     hashtag = random.choice(videos)
